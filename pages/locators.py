@@ -7,3 +7,10 @@ class MainPageLocators():
 class LoginPageLocators():
     LOGIN_FORM = (By.CLASS_NAME, "login_form")
     REGISTER_FORM = (By.CLASS_NAME, "register_form")
+
+class ProductPageLocators():
+    CART_BUTTON = (By.CLASS_NAME, "btn-add-to-basket")
+    NOTIFICATION = (By.CLASS_NAME, "alertinner :first-child")
+    PRODUCT_NAME = (By.TAG_NAME, "h1")
+    CART_COST = (By.CSS_SELECTOR, ".alertinner p strong")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
