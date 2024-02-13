@@ -27,3 +27,13 @@ class ProductPage(BasePage):
         assert self.browser.find_element(*ProductPageLocators.CART_COST).text == self.browser.find_element(
             *ProductPageLocators.PRODUCT_PRICE).text, "Product price does not match the cart cost"
         print("Product price matches the cart cost")
+
+    def should_not_be_success_message_after_time(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+           "Success message is presented, but should not be"
+        print("Success message is not presented")
+
+    def success_message_should_disappear(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should disappear"
+        print("Success message disappears")
