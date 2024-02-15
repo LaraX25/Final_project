@@ -1,6 +1,7 @@
 import time
 import pytest
 from .pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
 
 # link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
 
@@ -31,6 +32,7 @@ from .pages.product_page import ProductPage
 
 @pytest.mark.skip(reason="negative test")
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
     page = ProductPage(browser, link)
     page.open()
     page.should_be_added_to_cart()
@@ -39,6 +41,7 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
 
 
 def test_guest_cant_see_success_message(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
     page = ProductPage(browser, link)
     page.open()
     page.should_not_be_success_message_after_time()
@@ -46,6 +49,7 @@ def test_guest_cant_see_success_message(browser):
 
 @pytest.mark.skip(reason="negative test")
 def test_message_disappeared_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
     page = ProductPage(browser, link)
     page.open()
     page.should_be_added_to_cart()
@@ -66,3 +70,12 @@ def test_guest_can_go_to_login_page_from_product_page (browser):
     page.open()
     page.go_to_login_page()
 
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-age-of-the-pussyfoot_89/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.go_to_basket_page()
+    basket_page = BasketPage(browser, browser.current_url)
+    basket_page.should_be_empty_basket()
+    basket_page.should_not_be_product_in_basket()
