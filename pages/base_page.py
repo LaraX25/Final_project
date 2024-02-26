@@ -3,17 +3,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.common.exceptions import NoAlertPresentException
-from pages.locators import BasePageLocators, BasketPageLocators
+from .locators import BasePageLocators, BasketPageLocators
 
 
 class BasePage():
-    # def __init__(self, browser, url, timeout=10):
-    #     self.browser = browser
-    #     self.url = url
-    #     self.browser.implicitly_wait(timeout)
-    def __init__(self, browser, url):
+    def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
+        self.browser.implicitly_wait(timeout)
 
     def open(self):
         self.browser.get(self.url)
@@ -22,13 +19,12 @@ class BasePage():
     def go_to_login_page(self):
         login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         login_link.click()
-        # alert = self.browser.switch_to.alert
-        # alert.accept()
+        # self.browser.switch_to.alert.accept()  # alert
         print("Can go to Login page")
 
     def go_to_basket_page(self):
         basket_link = self.browser.find_element(*BasketPageLocators.BASKET_LINK)
-        # print(self.browser.find_element(*BasketPageLocators.BASKET_LINK).text)
+        # print(self.browser.find_element(*BasketPageLocators.BASKET_LINK).text)  # для отладки
         basket_link.click()
         print("Can go to Basket page")
 

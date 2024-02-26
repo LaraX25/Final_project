@@ -32,5 +32,4 @@ class LoginPage(BasePage):
         self.browser.find_element(*LoginPageLocators.PASSWORD).send_keys(password)
         self.browser.find_element(*LoginPageLocators.CONFIRM_PASSWORD).send_keys(password)
         self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON).click()
-        # print(self.browser.find_element(*LoginPageLocators.EMAIL_ADDRESS).text)
         print("New user registration was successful")
