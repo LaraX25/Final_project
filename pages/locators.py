@@ -8,6 +8,10 @@ class MainPageLocators():
 class LoginPageLocators():
     LOGIN_FORM = (By.CLASS_NAME, "login_form")
     REGISTER_FORM = (By.CLASS_NAME, "register_form")
+    EMAIL_ADDRESS = (By.ID, "id_registration-email")
+    PASSWORD = (By.ID, "id_registration-password1")
+    CONFIRM_PASSWORD = (By.ID, "id_registration-password2")
+    REGISTER_BUTTON = (By.NAME, "registration_submit")
 
 
 class ProductPageLocators():
@@ -22,6 +26,7 @@ class ProductPageLocators():
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc") # негативный тест
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class BasketPageLocators():
